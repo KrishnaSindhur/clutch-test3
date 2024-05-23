@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/part-of: test-dep111
+    test: help
+  name: test-external-service
+  namespace: sample-product-dev1
+spec:
+  ports:
+    - name: TCP
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    k8s.cpaas.nutanix.com/app: test-dep111
+    k8s.cpaas.nutanix.com/deployment-name: test-dep111
+    k8s.cpaas.nutanix.com/product: sample-product
+    k8s.cpaas.nutanix.com/programming-language: golang
+    k8s.cpaas.nutanix.com/team: team1
+    k8s.cpaas.nutanix.com/workload-resource-type: general
+  type: ClusterIP
